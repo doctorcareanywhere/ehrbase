@@ -23,7 +23,8 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: build
+        command: buildAndPush
+        containerRegistry: ehralpharegistry
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
