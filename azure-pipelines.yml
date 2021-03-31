@@ -28,4 +28,11 @@ stages:
         targetFiles: pom.xml
     - task: Maven@3
       enabled: true
+    - task: PublishBuildArtifacts@1
+      displayName: Publish application
+      inputs:
+        ArtifactName: ehrdrop
+        TargetPath: /application/target
+
+
          
