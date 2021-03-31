@@ -13,7 +13,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build and upgrade database
   jobs:
   - job: Build
     displayName: Build
@@ -21,5 +21,9 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: replacetokens@3
+      inputs:
+        tokenPrefix: '$('
+        targetFiles: pom.xml
     - task: Maven@3
+      enabled: false
          
