@@ -28,10 +28,13 @@ stages:
         targetFiles: pom.xml
     - task: Maven@3
       enabled: true
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: application/target
+        TargetFolder: $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
       displayName: Publish application
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/application/target'
         ArtifactName: ehrdrop
 
 
