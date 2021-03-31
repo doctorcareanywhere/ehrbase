@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
+- group: EHR-Alpha
 
 stages:
 - stage: Build
@@ -20,5 +20,6 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+    - task: replacetokens@3
     - task: Maven@3
          
