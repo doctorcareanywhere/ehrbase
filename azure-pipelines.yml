@@ -23,6 +23,7 @@ stages:
     - task: replacetokens@3
       inputs:
         tokenPrefix: '$('
+        tokenSuffix: ')'
         targetFiles: pom.xml
     - task: Maven@3
       enabled: false
