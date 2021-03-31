@@ -25,6 +25,7 @@ stages:
       inputs:
         command: buildAndPush
         containerRegistry: ehralpharegistry
+        repository: ehr/alpha
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
