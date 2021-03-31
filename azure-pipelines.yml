@@ -20,12 +20,5 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: buildAndPush
-        containerRegistry: ehralpharegistry
-        repository: ehr/alpha
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+    - task: Maven@3
+         
