@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-- group: EHR-Alpha
+- group: EHR Alpha
 
 stages:
 - stage: Build
