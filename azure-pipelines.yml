@@ -16,15 +16,16 @@ stages:
   displayName: Build and upgrade database
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build and Upgrade
     pool:
       vmImage: ubuntu-latest
     steps:
     - task: replacetokens@3
+      displayName: Replace settings
       inputs:
         tokenPrefix: '$('
         tokenSuffix: ')'
         targetFiles: pom.xml
     - task: Maven@3
-      enabled: false
+      enabled: true
          
