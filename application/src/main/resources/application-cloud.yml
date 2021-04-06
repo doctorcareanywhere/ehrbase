@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ehrbase
-    username: ehrbase
-    password: ehrbase
+    url: jdbc:postgresql://$(AZ_DATABASE_HOST)
+    username: $(AZ_PSQL_USERNAME)
+    password: $(AZ_PSQL_PASSWORD)
     hikari:
       maximum-pool-size: 50
       max-lifetime: 1800000
