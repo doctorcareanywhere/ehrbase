@@ -9,21 +9,29 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
+- group: EHR Alpha
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build and upgrade database
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build and Upgrade
     pool:
       vmImage: ubuntu-latest
     steps:
-    - task: Docker@2
-      displayName: Build an image
+    - task: replacetokens@3
+      displayName: Replace settings
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+        tokenPrefix: '$('
+        tokenSuffix: ')'
+        targetFiles: pom.xml
+    - task: Docker@2
+      displayName: Build and containerise
+      inputs:
+        containerRegistry: alphaehrregistry
+        command: buildAndPush
+        repository: ehralpha
+
+
+         
